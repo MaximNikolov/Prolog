@@ -1,0 +1,13 @@
+is_mammal(elepahnt).
+is_mammal(lion).
+is_mammal(dog).
+is_mammal(whale).
+
+is_big(elephan).
+is_big(lion).
+is_big(whale).
+
+is_preditor(lion).
+is_preditor(dog).
+
+is_mammal(X) :- animal(X).
