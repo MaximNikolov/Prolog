@@ -105,19 +105,24 @@ is_predator(X).
 
     // Разширена база знания с животни и правила
     const knowledge = `
-      
+      кола(електрическа, тесла).
+      кола(бензин, ауди).
+      кола(бензин, бмв).
+      кола(бензин, тойота).
+      кола(бензин, нисан).
+      кола(бензин, мерцидес).
 
     `;
 
     session.consult(knowledge);
 
     const animalAnimations = {
-      lion: '<img src="https://images.ecency.com/p/FUkUE5bzkAZT3HzV5tJDiU2ik81PCd4JCyhWnRcDN8XJsVFY3UNB8DCcF6FBnrG9mHUsoB7296D4omrF75j3S9mNdXjzd7j2xiKroEuvcf5umt9qDsRKoeDp3kBezDQscLbJuZaCqh8sgthRd5GukLgMiH16xWrcxhxh.png?format=match&mode=fit" class="animal-gif" alt="Лъв анимация" />',
-      elephant: '<img src="https://media.giphy.com/media/2v170e71aanfi/giphy.gif" class="animal-gif" alt="Слон анимация" />',
-      tiger: '<img src="https://media.giphy.com/media/fANhQpcPGr2hO/giphy.gif" class="animal-gif" alt="Тигър анимация" />',
-      crocodile: '<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" class="animal-gif" alt="Крокодил анимация" />',
-      kangaroo: '<img src="https://media.giphy.com/media/l0MYEw7nYdf6r62aI/giphy.gif" class="animal-gif" alt="Кенгуру анимация" />',
-      owl: '<img src="https://media.giphy.com/media/3ohs4B9Zz54HXGvoYs/giphy.gif" class="animal-gif" alt="Бухал анимация" />'
+      tesla: '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanp6MmRnaDF6aDA2ZXBhZ3E4Z3ByeHhwZDJxdWUwaWw5ZmVvdWtiNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RWZRMPbu3lc7m/giphy.gif" alt="Тесла анимация" />',
+      audi: '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmNpZDgxc3Rycmgza2c2MTdleWhiOGdydjF6cGVkcmQ3bTBhd21kdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l46CwlES1UnwgqsaQ/giphy.gif" class="car-gif" alt="Ауди анимация" />',
+      BMW: '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHJma2VsaDAzNnBmNWJuNTIxeDZ6Y2Z0Z20xM3g2NXUxcjdjbjRpYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yEWNsqrj8K7acGcCeo/giphy.gif" alt="бмв анимация" />',
+      Toyota: '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW9xM2xmZWNncTJ3YzFxYXpkZmhvd2F1bjI2NTc5aWRyeGJtcTJ1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MBaoSibIgaP7w6ndDM/giphy.gif" class="car-gif" alt="Тойота анимация" />',
+      Nissan: '<img src="https://media.giphy.com/media/Sb7TDIUBa0kMwibgj8/giphy.gif" class="car-gif" alt="Нисан анимация" />',
+      Mercedes: '<img src="https://media.giphy.com/media/nKm0g6vHQj0lXvZRUY/giphy.gif" class="car-gif" alt="Мерцидес анимация" />'
     };
 
     function runProlog() {
