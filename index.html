@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prolog коли с всички GIF</title>
+  <title>Prolog храни с всички GIF</title>
   <style>
     body {
       background: #121212;
@@ -21,7 +21,7 @@
       font-weight: 700;
       font-size: 2.8rem;
       margin-bottom: 10px;
-      text-shadow: 0 0 8px #00aaff;
+      text-shadow: 0 0 8px #ff8800;
     }
     p.instructions {
       max-width: 600px;
@@ -38,35 +38,35 @@
       font-family: 'Courier New', Courier, monospace;
       font-size: 1.2rem;
       background: #222;
-      border: 2px solid #00aaff;
+      border: 2px solid #ffaa00;
       color: #ddd;
       border-radius: 12px;
       padding: 15px;
       resize: vertical;
-      box-shadow: inset 0 0 8px #00aaff88;
+      box-shadow: inset 0 0 8px #ffaa0088;
       transition: border-color 0.3s ease;
     }
     textarea:focus {
       outline: none;
-      border-color: #00d4ff;
-      box-shadow: inset 0 0 12px #00d4ffcc;
+      border-color: #ffc400;
+      box-shadow: inset 0 0 12px #ffc400cc;
     }
     button {
       margin-top: 25px;
       padding: 14px 40px;
       font-size: 1.3rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #00aaff, #005f99);
+      background: linear-gradient(90deg, #ffaa00, #cc6600);
       border: none;
       border-radius: 30px;
       color: white;
       cursor: pointer;
-      box-shadow: 0 4px 15px #00aaffcc;
+      box-shadow: 0 4px 15px #ffaa00cc;
       transition: background 0.4s ease, box-shadow 0.3s ease;
     }
     button:hover {
-      background: linear-gradient(90deg, #00d4ff, #0080cc);
-      box-shadow: 0 6px 20px #00d4ffcc;
+      background: linear-gradient(90deg, #ffc400, #ff8800);
+      box-shadow: 0 6px 20px #ffc400cc;
     }
     #result {
       margin-top: 30px;
@@ -75,18 +75,18 @@
       background: #222;
       padding: 20px 25px;
       border-radius: 14px;
-      box-shadow: 0 0 15px #00aaffbb;
+      box-shadow: 0 0 15px #ffaa00bb;
       white-space: pre-wrap;
-      color: #0ff;
+      color: #ff0;
       min-height: 70px;
       font-family: 'Courier New', Courier, monospace;
     }
-    #car-animation {
+    #food-animation {
       margin-top: 40px;
       max-width: 640px;
       background: #111;
       border-radius: 16px;
-      box-shadow: 0 0 20px #00aaff88;
+      box-shadow: 0 0 20px #ffaa0088;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -96,148 +96,81 @@
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    #car-animation.visible {
+    #food-animation.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .car-gif {
+    .food-gif {
       max-width: 150px;
       max-height: 120px;
       border-radius: 14px;
-      box-shadow: 0 0 18px #00aaffcc;
+      box-shadow: 0 0 18px #ffaa00cc;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-    .car-gif:hover {
+    .food-gif:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 28px #00d4ffcc;
+      box-shadow: 0 0 28px #ffc400cc;
     }
   </style>
 </head>
 <body>
-  <h1>Prolog коли с всички GIF</h1>
+  <h1>Prolog храни с всички GIF</h1>
   <p class="instructions">
     Въведи Prolog заявка в полето по-долу и натисни "Изпълни".<br>
-    Примерни заявки: <code>is_electric(X).</code>, <code>is_suv(X).</code>, <code>manufacturer(X, bmw).</code>
+    Примерни заявки: <code>is_vegan(X).</code>, <code>is_fast_food(X).</code>, <code>is_italian(X).</code>
   </p>
 
   <textarea id="prolog-input">% Примери на заявки:
-is_electric(X).
-is_suv(X).
-manufacturer(X, bmw).
+is_vegan(X).
+is_fast_food(X).
+is_dessert(X).
+is_italian(X).
   </textarea><br />
   <button onclick="runProlog()">Изпълни</button>
   <br />
   <button onclick="clearAll()" style="margin-top: 12px; background: #555;">Изчисти</button>
   <div id="result"></div>
-  <div id="car-animation"></div>
+  <div id="food-animation"></div>
 
   <script src="https://unpkg.com/tau-prolog"></script>
   <script>
     const session = pl.create();
 
     const knowledge = `
-car(bmw_3_series).
-car(audi_a6).
-car(toyota_corolla).
-car(ford_f150).
-car(tesla_model_s).
-car(jeep_wrangler).
-car(porsche_911).
-car(mercedes_s_class).
-car(nissan_leaf).
-car(honda_civic).
-car(chevrolet_camaro).
-car(subaru_outback).
+food(pizza).
+food(salad).
+food(burger).
+food(sushi).
+food(pasta).
+food(ice_cream).
 
-electric(tesla_model_s).
-electric(nissan_leaf).
+is_vegan(salad).
+is_vegan(sushi).
 
-diesel(bmw_3_series).
-diesel(audi_a6).
-diesel(mercedes_s_class).
-diesel(subaru_outback).
+is_fast_food(burger).
+is_fast_food(pizza).
 
-petrol(toyota_corolla).
-petrol(porsche_911).
-petrol(jeep_wrangler).
-petrol(ford_f150).
-petrol(honda_civic).
-petrol(chevrolet_camaro).
-
-suv(jeep_wrangler).
-suv(ford_f150).
-suv(subaru_outback).
-
-sedan(bmw_3_series).
-sedan(audi_a6).
-sedan(toyota_corolla).
-sedan(tesla_model_s).
-sedan(mercedes_s_class).
-sedan(nissan_leaf).
-sedan(honda_civic).
-
-sports_car(porsche_911).
-sports_car(chevrolet_camaro).
-
-luxury(bmw_3_series).
-luxury(audi_a6).
-luxury(tesla_model_s).
-luxury(porsche_911).
-luxury(mercedes_s_class).
-
-made_by(bmw_3_series, bmw).
-made_by(audi_a6, audi).
-made_by(toyota_corolla, toyota).
-made_by(ford_f150, ford).
-made_by(tesla_model_s, tesla).
-made_by(jeep_wrangler, jeep).
-made_by(porsche_911, porsche).
-made_by(mercedes_s_class, mercedes).
-made_by(nissan_leaf, nissan).
-made_by(honda_civic, honda).
-made_by(chevrolet_camaro, chevrolet).
-made_by(subaru_outback, subaru).
-
-is_electric(X) :- electric(X).
-is_petrol(X) :- petrol(X).
-is_diesel(X) :- diesel(X).
-
-is_sedan(X) :- sedan(X).
-is_suv(X) :- suv(X).
-is_sports_car(X) :- sports_car(X).
-
-is_luxury(X) :- luxury(X).
-
-manufacturer(X, Y) :- made_by(X, Y).
-
-is_environment_friendly(X) :- electric(X).
-is_gas_guzzler(X) :- suv(X), petrol(X).
-is_family_car(X) :- sedan(X), \\+ sports_car(X).
-is_offroad_vehicle(X) :- suv(X), made_by(X, jeep).
+is_dessert(ice_cream).
+is_italian(pizza).
+is_italian(pasta).
 `;
 
     session.consult(knowledge);
 
-    const carAnimations = {
-       bmw_3_series: '<img src="https://media4.giphy.com/media/t8OmkMTHlu1nrMdKzq/giphy.gif" class="car-gif" alt="BMW M3" />',
-  audi_a6: '<img src="https://media1.giphy.com/media/Ky20WwAT910O10VBur/giphy.gif" class="car-gif" alt="Audi A6" />',
-  toyota_corolla: '<img src="https://media0.giphy.com/media/7V1sZZMLdw9JYq5Abu/giphy.gif" class="car-gif" alt="Toyota Corolla" />',
-  ford_f150: '<img src="https://media0.giphy.com/media/8IzurmLG3rkZir2XLK/giphy.gif" class="car-gif" alt="Ford F150" />',
-  tesla_model_s: '<img src="https://media4.giphy.com/media/SUhYpmCM6sIpDSNzw2/giphy.gif" class="car-gif" alt="Tesla Model S" />',
-  jeep_wrangler: '<img src="https://media1.giphy.com/media/5jSZKytefeAE22vnnf/giphy.gif" class="car-gif" alt="Jeep Wrangler" />',
-  porsche_911: '<img src="https://media3.giphy.com/media/MBaoSibIgaP7w6ndDM/giphy.gif" class="car-gif" alt="Porsche 911" />',
-  mercedes_s_class: '<img src="https://media2.giphy.com/media/1h9oky62akdDMrR8X1/giphy.gif" class="car-gif" alt="Mercedes S class">',
-  nissan_leaf: '<img src="https://media2.giphy.com/media/FQrKPsolkooUTalcMx/giphy.gif" class="car-gif" alt="Nissan Leaf">',
-  honda_civic: '<img src="https://media2.giphy.com/media/1h9oky62akdDMrR8X1/giphy.gif" class="car-gif" alt="Honda Civic">',
-  chevrolet_camaro: '<img src="https://media1.giphy.com/media/r1MMZ0TRoGVLQMeuxZ/giphy.gif" class="car-gif" alt="Chevrolet Camaro">',
-  subaru_outback: '<img src="https://media3.giphy.com/media/QFo1fdJMdBDNdeuaCj/giphy.gif" class="car-gif" alt="Subaru Outback">'
+    const foodAnimations = {
+      pizza: '<img src="https://media4.giphy.com/media/t8OmkMTHlu1nrMdKzq/giphy.gif" class="food-gif" alt="Pizza" />',
+      salad: '<img src="https://media1.giphy.com/media/Ky20WwAT910O10VBur/giphy.gif" class="food-gif" alt="Salad" />',
+      burger: '<img src="https://media0.giphy.com/media/7V1sZZMLdw9JYq5Abu/giphy.gif" class="food-gif" alt="Burger" />',
+      sushi: '<img src="https://media0.giphy.com/media/8IzurmLG3rkZir2XLK/giphy.gif" class="food-gif" alt="Sushi" />',
+      pasta: '<img src="https://media4.giphy.com/media/SUhYpmCM6sIpDSNzw2/giphy.gif" class="food-gif" alt="Pasta" />',
+      ice_cream: '<img src="https://media1.giphy.com/media/5jSZKytefeAE22vnnf/giphy.gif" class="food-gif" alt="Ice Cream" />'
     };
 
-   function runProlog() {
+    function runProlog() {
       const input = document.getElementById("prolog-input").value.trim();
       const resultDiv = document.getElementById("result");
-      const animDiv = document.getElementById("car-animation");
+      const animDiv = document.getElementById("food-animation");
 
       resultDiv.textContent = "";
       animDiv.innerHTML = "";
@@ -246,20 +179,19 @@ is_offroad_vehicle(X) :- suv(X), made_by(X, jeep).
       session.query(input);
 
       let foundAny = false;
-      let carsFound = new Set();
+      let foodsFound = new Set();
 
       session.answers(answer => {
-        if(answer === false) {
-          if(!foundAny) {
+        if (answer === false) {
+          if (!foundAny) {
             resultDiv.textContent = "Няма резултати за тази заявка.";
           } else {
             resultDiv.textContent += "\nНяма повече резултати.";
-            // Покажи всички GIF-ове
-            if(carsFound.size > 0) {
+            if (foodsFound.size > 0) {
               let html = "";
-              carsFound.forEach(car => {
-                if(carAnimations[car]) {
-                  html += carAnimations[car];
+              foodsFound.forEach(food => {
+                if (foodAnimations[food]) {
+                  html += foodAnimations[food];
                 }
               });
               animDiv.innerHTML = html;
@@ -272,21 +204,21 @@ is_offroad_vehicle(X) :- suv(X), made_by(X, jeep).
         const formatted = pl.format_answer(answer);
         resultDiv.textContent += formatted + "\n";
 
-        // Търсим всички X
         const regex = /X = ([a-zA-Z0-9_]+)/g;
         let match;
-        while((match = regex.exec(formatted)) !== null) {
-          carsFound.add(match[1]);
+        while ((match = regex.exec(formatted)) !== null) {
+          foodsFound.add(match[1]);
         }
       });
     }
+
     function clearAll() {
-  document.getElementById("prolog-input").value = "";
-  document.getElementById("result").textContent = "";
-  const animDiv = document.getElementById("car-animation");
-  animDiv.innerHTML = "";
-  animDiv.classList.remove("visible");
-}
+      document.getElementById("prolog-input").value = "";
+      document.getElementById("result").textContent = "";
+      const animDiv = document.getElementById("food-animation");
+      animDiv.innerHTML = "";
+      animDiv.classList.remove("visible");
+    }
   </script>
 </body>
 </html>
